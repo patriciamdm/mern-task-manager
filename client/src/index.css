@@ -58,7 +58,27 @@ a {
   color: var(--gray2);
 }
 
+@media (min-width: 768px) {
+  main {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  aside {
+    background-color: var(--white);
+    flex: 0 0 300px;
+  }
+
+  section {
+    flex: 1;
+  }
+
+}
+
+
+
 /** BUTTONS **/
+
 .btn {
   margin-top: 2rem;
   font-family: var(--headingFont);
@@ -75,16 +95,16 @@ a {
 }
 
 .btn-primary {
-  background-color: var(--gris2);
-  color: var(--blanco);
+  background-color: var(--gray2);
+  color: var(--white);
 }
 
 .btn-primary:hover {
-  background: var(--gris3);
+  background: var(--gray3);
 }
 
 .btn-secondary {
-  background-color: var(--gris1);
+  background-color: var(--gray1);
 }
 
 .btn-block {
@@ -93,7 +113,7 @@ a {
 }
 
 .btn-submit:hover {
-  background-color: var(--gris2);
+  background-color: var(--gray2);
 }
 
 .btn-blank {
@@ -101,4 +121,69 @@ a {
   padding: 0;
   display: block;
   background-color: transparent;
+}
+
+
+
+/* LOG IN & SIGN UP PAGES */
+
+.login {
+  background-color: var(--gray2);
+  height: 100vh;
+  min-height: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form {
+  background-color: var(--white);
+  width: 95%;
+  max-width: 500px;
+  padding: 5rem 3rem;
+  border-radius: 1rem;
+}
+
+.form-field {
+  display: flex;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+
+.form-field:last-of-type {
+  margin: 0;
+}
+
+.form-field label {
+  flex: 0 0 100px;
+  font-family: var(--textFont);
+}
+
+.form-field input[type="password"],
+.form-field input[type="email"],
+.form-field input[type="text"] {
+  border: 1px solid #e1e1e1;
+  padding: 1rem;
+  flex: 1;
+}
+
+
+
+/** SIDEBAR **/
+
+.new-project {
+  margin-top: 6rem;
+}
+
+.new-project input[type="text"] {
+  background-color: var(--gray1);
+  padding: 1.5rem;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid var(--gray2);
+  border-radius: 0;
+}
+
+.new-project input[type="text"]::placeholder {
+  color: var(--gray2);
 }
