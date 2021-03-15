@@ -1,0 +1,104 @@
+:root {
+  --white: #ffffff;
+  --gray1: #edf2f6;
+  --gray2: #2f3848;
+  --gray3: #1a202d;
+  --black: #000000;
+  --headingFont: 'Raleway', sans-serif;
+  --textFont: 'Roboto', sans-serif;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+  font-size: 62.5%;
+}
+
+body {
+  min-height: 100%;
+  background-color: var(--gray1);
+  font-size: 16px;
+  font-size: 1.6rem;
+  font-family: var(--textFont);
+}
+
+
+h1, h2 {
+  font-family: var(--headingFont);
+  font-weight: 900;
+  margin: 0 0 4rem 0;
+  text-align: center;
+  color: var(--gray2);
+}
+
+h1 span {
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.4rem;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--gray2);
+}
+
+/** BUTTONS **/
+.btn {
+  margin-top: 2rem;
+  font-family: var(--headingFont);
+  padding: 1.5rem;
+  font-size: 1.4;
+  font-weight: 400;
+  border-radius: .5rem;
+  border: none;
+  transition: background-color .3s ease;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--gris2);
+  color: var(--blanco);
+}
+
+.btn-primary:hover {
+  background: var(--gris3);
+}
+
+.btn-secondary {
+  background-color: var(--gris1);
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.btn-submit:hover {
+  background-color: var(--gris2);
+}
+
+.btn-blank {
+  margin: 0;
+  padding: 0;
+  display: block;
+  background-color: transparent;
+}
