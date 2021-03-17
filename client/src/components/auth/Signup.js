@@ -47,7 +47,9 @@ const Signup = () => {
                     </div>
 
                 </form>
-                <Link to={'/'} style={{display: 'block', marginTop: '2rem', opacity: '.7', textAlign: 'center'}}>Already signed up? Log in.</Link>
+                <Link to={'/'} style={{ display: 'block', marginTop: '2rem', opacity: '.7', textAlign: 'center' }}>
+                    Already signed up? Log in.
+                </Link>
             </div>
         </section>
 

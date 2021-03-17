@@ -1,5 +1,8 @@
 import React from 'react'
 import Sidebar from '../layout/Sidebar'
+import Navbar from '../layout/Navbar'
+import TaskForm from '../tasks/Task-form'
+import TasksList from '../tasks/Tasks-list'
 
 
 const Projects = () => {
@@ -8,9 +11,14 @@ const Projects = () => {
             <Sidebar />
 
             <section>
-
+                <Navbar />
                 
-                <article style={{padding: '4rem'}}>
+                <article>
+                    <TaskForm />
+
+                    <div style={{padding: '4rem'}} >
+                        <TasksList />
+                    </div>
 
                 </article>
             </section>
@@ -19,3 +27,4 @@ const Projects = () => {
 }
 
 export default Projects
+

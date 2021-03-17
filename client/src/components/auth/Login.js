@@ -35,7 +35,9 @@ const Login = () => {
                     </div>
 
                 </form>
-                <Link to={'/signup'} style={{display: 'block', marginTop: '2rem', opacity: '.7', textAlign: 'center'}}>Don't have an account? Sign up.</Link>
+                <Link to={'/signup'} style={{ display: 'block', marginTop: '2rem', opacity: '.7', textAlign: 'center' }}>
+                    Don't have an account? Sign up.
+                </Link>
             </div>
         </section>
 

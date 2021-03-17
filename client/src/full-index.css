@@ -1,16 +1,14 @@
-:root {
-    --blanco: #ffffff;
-    --gris1: #edf2f6;
-    --gris2: #2f3848;
-    --gris3: #1a202d;
-    --negro: #000000;
+/* :root {
+    --white: #ffffff;
+    --gray1: #edf2f6;
+    --gray2: #2f3848;
+    --gray3: #1a202d;
+    --black: #000000;
     --headingFont: 'Raleway', sans-serif;
     --textFont: 'Roboto', sans-serif;
 }
 
-*,
-*:before,
-*:after {
+*, *:before, *:after {
     box-sizing: inherit;
 }
 
@@ -22,20 +20,19 @@ html {
 
 body {
     min-height: 100%;
-    background-color: var(--gris1);
+    background-color: var(--gray1);
     font-size: 16px;
     font-size: 1.6rem;
     font-family: var(--textFont);
 }
 
 
-h1,
-h2 {
+h1, h2 {
     font-family: var(--headingFont);
     font-weight: 900;
     margin: 0 0 4rem 0;
     text-align: center;
-    color: var(--gris2);
+    color: var(--gray2);
 }
 
 h1 span {
@@ -58,11 +55,18 @@ ul {
 
 a {
     text-decoration: none;
-    color: var(--gris2);
-}
+    color: var(--gray2);
+} */
 
-/** BOTONES **/
-.btn {
+
+
+
+
+
+
+
+/** BOTONES *+/
+/* .btn {
     margin-top: 2rem;
     font-family: var(--headingFont);
     padding: 1.5rem;
@@ -78,16 +82,16 @@ a {
 }
 
 .btn-primario {
-    background-color: var(--gris2);
-    color: var(--blanco);
+    background-color: var(--gray2);
+    color: var(--white);
 }
 
 .btn-primario:hover {
-    background: var(--gris3);
+    background: var(--gray3);
 }
 
 .btn-secundario {
-    background-color: var(--gris1);
+    background-color: var(--gray1);
 }
 
 .btn-block {
@@ -96,7 +100,7 @@ a {
 }
 
 .btn-submit:hover {
-    background-color: var(--gris2);
+    background-color: var(--gray2);
 }
 
 .btn-blank {
@@ -104,8 +108,13 @@ a {
     padding: 0;
     display: block;
     background-color: transparent;
-}
+} */
 
+
+
+
+
+/* 
 @media (min-width: 768px) {
     .contenedor-app {
         display: flex;
@@ -113,7 +122,7 @@ a {
     }
 
     aside {
-        background-color: var(--blanco);
+        background-color: var(--white);
         flex: 0 0 300px;
     }
 
@@ -121,11 +130,16 @@ a {
         flex: 1;
     }
 
-}
+} */
+
+
+
+
+
 
 
 /* BARRA LATERAL */
-aside {
+/* aside {
     padding: 3rem;
 }
 
@@ -134,13 +148,13 @@ aside {
 }
 
 .formulario-nuevo-proyecto .input-text {
-    border-bottom: 1px solid var(--gris2);
+    border-bottom: 1px solid var(--gray2);
     border-radius: 0;
-    background-color: var(--gris1);
+    background-color: var(--gray1);
 }
 
 .formulario-nuevo-proyecto .input-text::placeholder {
-    color: var(--gris2);
+    color: var(--gray2);
 }
 
 .proyectos {
@@ -153,7 +167,7 @@ aside {
 
 .listado-proyectos li a {
     font-size: 1.4rem;
-    color: var(--gris2);
+    color: var(--gray2);
     line-height: 1.5;
     font-weight: 300;
 }
@@ -161,12 +175,12 @@ aside {
 .app-header {
     display: flex;
     justify-content: space-between;
-    background-color: var(--gris2);
+    background-color: var(--gray2);
     padding: 4rem;
 }
 
 .nombre-usuario {
-    color: var(--blanco);
+    color: var(--white);
     font-size: 2.2rem;
     margin: 0;
 }
@@ -176,7 +190,7 @@ aside {
 }
 
 .nav-principal a {
-    color: var(--blanco);
+    color: var(--white);
     text-decoration: none;
 }
 
@@ -184,9 +198,17 @@ aside {
     margin-right: 2rem;
 }
 
+*/
+
+
+
+
+
+
+
 /** Formulario crear y editar tareas **/
-.formulario {
-    background-color: var(--gris3);
+/* .formulario {
+    background-color: var(--gray3);
     padding: 4rem;
 }
 
@@ -201,7 +223,7 @@ aside {
 
 .contenedor-input label {
     margin-bottom: 1rem;
-    color: var(--blanco);
+    color: var(--white);
 }
 
 .input-text {
@@ -210,14 +232,20 @@ aside {
     border-radius: .5rem;
     flex: 1;
     width: 100%;
-}
+} */
+
+
+
+
+
+
+
+
 
 /** TAREAS LISTADO **/
-.contenedor-tareas {
+/* .contenedor-tareas {
     padding: 4rem;
 }
-
-
 
 .listado-tareas {
     max-width: 600px;
@@ -227,12 +255,25 @@ aside {
 .tarea {
     display: flex;
     justify-content: space-between;
-    background-color: var(--blanco);
+    background-color: var(--white);
     padding: .5rem 2rem;
     align-items: center;
     margin-bottom: 1rem;
     border-radius: .5rem;
 
+}
+
+.tarea p {
+    font-size: 1.6rem;
+    flex: 1;
+    padding-right: 2rem;
+}
+
+.tarea .btn {
+    padding: .8rem;
+    font-size: 1.4rem;
+    border-radius: 0;
+    margin: 0;
 }
 
 .sombra {
@@ -249,19 +290,6 @@ aside {
 
 .tarea .acciones .btn:first-of-type {
     margin-right: 1rem;
-}
-
-.tarea p {
-    font-size: 1.6rem;
-    flex: 1;
-    padding-right: 2rem;
-}
-
-.tarea .btn {
-    padding: .8rem;
-    font-size: 1.4rem;
-    border-radius: 0;
-    margin: 0;
 }
 
 .estado {
@@ -292,24 +320,25 @@ aside {
 .completo,
 .correcto {
     background-color: rgba(154, 252, 154, .3);
-    color: var(--gris3);
+    color: var(--gray3);
 }
 
 .incompleto {
     background-color: rgba(255, 178, 178, .4);
-    color: var(--gris3);
+    color: var(--gray3);
 }
 
 .error {
     max-width: 600px;
     margin: 2rem auto 0 auto;
     background-color: rgb(170, 0, 0);
-    color: var(--blanco);
+    color: var(--white); */
 }
 
 
 
-.tarea-enter,
+
+/* .tarea-enter,
 .proyecto-enter {
     opacity: 0;
 }
@@ -329,10 +358,14 @@ aside {
 .proyecto-exit-active {
     opacity: 0;
     transition: opacity 200ms;
-}
+} */
 
-.form-usuario {
-    background-color: var(--gris2);
+
+
+
+
+/* .form-usuario {
+    background-color: var(--gray2);
     height: 100vh;
     min-height: 800px;
     display: flex;
@@ -344,7 +377,7 @@ aside {
     padding: 5rem 3rem;
     max-width: 500px;
     width: 95%;
-    background-color: var(--blanco);
+    background-color: var(--white);
     border-radius: 1rem;
 }
 
@@ -375,7 +408,11 @@ aside {
     margin-top: 2rem;
     display: block;
     opacity: .7;
-}
+} */
+
+
+
+
 
 
 .alerta {
@@ -411,5 +448,5 @@ aside {
 
 .alerta-error {
     background-color: rgb(230, 78, 78);
-    color: var(--blanco);
+    color: var(--white);
 }
