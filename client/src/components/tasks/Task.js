@@ -8,7 +8,7 @@ const Task = ({ task }) => {
     const { selproject } = projectsContext
     
     const tasksContext = useContext(TaskContext)
-    const { deleteTask, getTasks, taskState } = tasksContext
+    const { deleteTask, getTasks, taskState, selectTask } = tasksContext
 
     const [currentProject] = selproject  // destructuring, comes as an array
 
@@ -37,7 +37,7 @@ const Task = ({ task }) => {
             </div>
 
             <div className="actions">
-                <button type="button" className="btn btn-primary" >Edit</button>
+                <button type="button" className="btn btn-primary" onClick={() => selectTask(task)}>Edit</button>
                 <button type="button" className="btn btn-secondary" onClick={() => deleteOneTask(task.id)} >Delete</button>
             </div>
         </li>

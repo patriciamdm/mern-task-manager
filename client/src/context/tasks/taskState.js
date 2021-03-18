@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 import taskContext from './taskContext'
 import taskReducer from './taskReducer'
 
-import { PROJECT_TASKS, ADD_TASK, TASK_ERROR, DELETE_TASK, COMPLETED_TASK } from '../../types'
+import { PROJECT_TASKS, ADD_TASK, TASK_ERROR, DELETE_TASK, COMPLETED_TASK, SELECTED_TASK, UPDATE_TASK } from '../../types'
 
 
 const TaskState = props => {
@@ -21,7 +21,8 @@ const TaskState = props => {
             { id: 8, name: 'cart', completed: true, projectId: 3 }
         ],
         projecttasks: null,
-        taskerror: false
+        taskerror: false,
+        selectedtask: null
     }
 
     const [state, dispatch] = useReducer(taskReducer, initialState)
@@ -40,12 +41,15 @@ const TaskState = props => {
     
     const taskState = info => dispatch({ type: COMPLETED_TASK, payload: info})
     
+    const selectTask = info => dispatch({ type: SELECTED_TASK, payload: info })
+    
+    const updateTask = info => dispatch({type: UPDATE_TASK, payload: info})
 
 
     return (
         <taskContext.Provider value={{
-            tasks: state.tasks, projecttasks: state.projecttasks, taskerror: state.taskerror,
-            getTasks, addTask, showError, deleteTask, taskState
+            tasks: state.tasks, projecttasks: state.projecttasks, taskerror: state.taskerror, selectedtask: state.selectedtask,
+            getTasks, addTask, showError, deleteTask, taskState, selectTask, updateTask
         }} >
             {props.children}
         </taskContext.Provider>

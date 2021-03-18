@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import projectContext from '../../context/projects/projectContext'
 import TaskContext from '../../context/tasks/taskContext'
 
@@ -9,11 +9,16 @@ const TaskForm = () => {
     const { selproject } = projectsContext
 
     const tasksContext = useContext(TaskContext)
-    const { taskerror, getTasks, addTask, showError } = tasksContext
+    const { taskerror, getTasks, addTask, showError, selectedtask, updateTask } = tasksContext
+
     
     const [newtask, setNewTask] = useState({
         name: ''
     })
+
+    useEffect(() => {
+        selectedtask !== null ? setNewTask(selectedtask) : setNewTask({ name: '' })
+    }, [selectedtask])
     
     if (!selproject) return null
 
@@ -29,7 +34,8 @@ const TaskForm = () => {
             return
         }
 
-        addTask(newtask)
+        selectedtask === null ? addTask(newtask) : updateTask(newtask)
+
         getTasks(currentProject.id)
         setNewTask({ name: '' })
     }
@@ -42,7 +48,7 @@ const TaskForm = () => {
                 </div>
 
                 <div>
-                    <input type="submit" value="Add Task" className="btn btn-primary btn-block btn-submit" />
+                    <input type="submit" className="btn btn-primary btn-block btn-submit" value={selectedtask ? 'Edit task' : 'Add task'}/>
                 </div>            
             </form>
             {taskerror && <p className="message error">The task name is required</p>}
