@@ -12,7 +12,7 @@ const connectDB = async () => {
         const db = await mongoose.connect(process.env.DB_REMOTE, { useNewUrlParser: true, useUnifiedTopology: true })
         console.log(`Connected to Mongo! Database name: "${db.connections[0].name}"`)
     } catch (err) {
-        console.error('Error connecting to mongo', err)
+        console.error('Error connecting to mongo:', err)
         process.exit(1)
     }
 }
