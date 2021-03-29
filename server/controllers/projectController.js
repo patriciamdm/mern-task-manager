@@ -1,9 +1,16 @@
+const { validationResult } = require('express-validator')
+
 const Project = require('../models/project.model')
 
 
 exports.createProject = async (req, res) => {
 
-    const {name} = req.body
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ msgs: errors.array() })
+    }
+
+    const { name } = req.body
     const creator = req.user.id
 
     try {
