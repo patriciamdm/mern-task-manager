@@ -20,4 +20,12 @@ router.get('/',
 )
 
 
+router.put('/:id',
+    userIsAuthenticated,
+    [
+        check('name', 'Name is required').not().isEmpty()
+    ],
+    projectController.updateProject
+)
+
 module.exports = router
