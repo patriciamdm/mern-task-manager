@@ -62,3 +62,22 @@ exports.updateProject = async (req, res) => {
         res.status(500).json({ msg: 'Error updating project in database' })
     }
 }
+
+
+exports.deleteProject = async (req, res) => {
+    try {
+        let project = await Project.findById(req.params.id)
+        if (!project) {
+            return res.status(404).jason({msg: 'Project not found'})
+        }
+        if (project.creator.toString() !== req.user.id) {
+            return res.status(401).jason({msg: 'Not authorized'})
+        }
+        await Project.findByIdAndDelete(req.params.id)
+        res.json({msg: 'Project deleted successfully'})
+
+    } catch (err) {
+        console.error('Error deleting project:', err)
+        res.status(500).json({ msg: 'Error deleting project from database' })
+    }
+}

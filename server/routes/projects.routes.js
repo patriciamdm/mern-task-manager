@@ -14,6 +14,7 @@ router.post('/',
     projectController.createProject
 )
 
+
 router.get('/',
     userIsAuthenticated,
     projectController.getProjects
@@ -27,5 +28,12 @@ router.put('/:id',
     ],
     projectController.updateProject
 )
+
+
+router.delete('/:id',
+    userIsAuthenticated,
+    projectController.deleteProject
+)
+
 
 module.exports = router
