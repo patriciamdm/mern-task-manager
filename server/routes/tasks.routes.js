@@ -15,25 +15,22 @@ router.post('/',
 )
 
 
-// router.get('/',
-//     userIsAuthenticated,
-//     taskController.getProjects
-// )
+router.get('/',
+    userIsAuthenticated,
+    taskController.getTasks
+)
 
 
-// router.put('/:id',
-//     userIsAuthenticated,
-//     [
-//         check('name', 'Name is required').not().isEmpty()
-//     ],
-//     taskController.updateProject
-// )
+router.put('/:id',
+    userIsAuthenticated,
+    taskController.updateTask
+)
 
 
-// router.delete('/:id',
-//     userIsAuthenticated,
-//     taskController.deleteProject
-// )
+router.delete('/:id',
+    userIsAuthenticated,
+    taskController.deleteTask
+)
 
 
 module.exports = router

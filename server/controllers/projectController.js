@@ -40,11 +40,6 @@ exports.updateProject = async (req, res) => {
         return res.status(400).json({ msgs: errors.array() })
     }
 
-    const { name } = req.body
-    const editedProject = {}
-
-    name ? editedProject.name = name : null
-
     try {
         let project = await Project.findById(req.params.id)
         if (!project) {
@@ -54,7 +49,7 @@ exports.updateProject = async (req, res) => {
             return res.status(401).jason({msg: 'Not authorized'})
         }
 
-        project = await Project.findOneAndUpdate(req.params.id, editedProject, {new: true})
+        project = await Project.findByIdAndUpdate(req.params.id, req.body, {new: true})
         res.json({ project })
 
     } catch (err) {
