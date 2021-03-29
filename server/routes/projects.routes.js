@@ -14,10 +14,10 @@ router.post('/',
     projectController.createProject
 )
 
-// router.get('/',
-//     userIsAuthenticated,
-//     projectController.createProject
-// )
+router.get('/',
+    userIsAuthenticated,
+    projectController.getProjects
+)
 
 
 module.exports = router
