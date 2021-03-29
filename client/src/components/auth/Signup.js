@@ -1,24 +1,46 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
+import AlertContext from '../../context/alerts/alertContext'
 
 
 const Signup = () => {
+
+    const alertContext = useContext(AlertContext)
+    const { alert, showAlert } = alertContext
 
     const [user, setUser] = useState({
         username: '',
         email: '',
         password: '',
         confirm: ''
-    }) 
+    })
+
+    const { username, email, password, confirm } = user
 
     const handleChange = e => setUser({ ...user, [e.target.name]: e.target.value })
 
     const handleSubmit = e => {
         e.preventDefault()
+
+        if (username.trim() === '' || email.trim() === '' || password.trim() === '' || confirm.trim() === '') {
+            showAlert('All fields are required', 'alert-error')
+            return
+        }
+
+        if (password.trim().length < 6) {
+            showAlert('Password must have at least 6 characters', 'alert-error')
+            return
+        }
+
+        if (password !== confirm) {
+            showAlert('Passwords must be the same', 'alert-error')
+            return
+        }
     }
 
     return (
         <section className="login">
+            {alert && <div className={`alert ${alert.category}`}> {alert.msg} </div> }
             <div className="login-form">
                 <h1>Sign Up</h1>
                 <form onSubmit={handleSubmit}>
