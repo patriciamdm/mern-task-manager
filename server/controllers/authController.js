@@ -40,7 +40,6 @@ exports.authenticateUser = async (req, res) => {
         })
 
     } catch (err) {
-
         console.error('Error authenticating user:', err)
         res.status(500).json({ msg: 'Error authenticating user' })
     }

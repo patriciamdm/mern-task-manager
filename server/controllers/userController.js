@@ -43,7 +43,6 @@ exports.createUser = async (req, res) => {
         })
         
     } catch (err) {
-
         console.error('Error creating user:', err)
         res.status(500).json({ msg: 'Error saving user to database' })
     }
