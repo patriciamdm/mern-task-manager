@@ -24,22 +24,22 @@ const Signup = () => {
                 <form onSubmit={handleSubmit}>
                     <div className="form-field">
                         <label htmlFor="username">Username</label>
-                        <input type="text" id="username" name="username" value={user.username} onChange={handleChange} />
+                        <input type="text" id="username" name="username" value={user.username} onChange={handleChange} placeholder="Your name" />
                     </div>
                     
                     <div className="form-field">
                         <label htmlFor="email">Email</label>
-                        <input type="email" id="email" name="email" value={user.email} onChange={handleChange} />
+                        <input type="email" id="email" name="email" value={user.email} onChange={handleChange} placeholder="Your email" />
                     </div>
                     
                     <div className="form-field">
                         <label htmlFor="password">Password</label>
-                        <input type="password" id="password" name="password" value={user.password} onChange={handleChange} />
+                        <input type="password" id="password" name="password" value={user.password} onChange={handleChange} placeholder="Your password" />
                     </div>
                     
                     <div className="form-field">
                         <label htmlFor="confirm">Confirm password</label>
-                        <input type="password" id="confirm" name="confirm" value={user.confirm} onChange={handleChange} />
+                        <input type="password" id="confirm" name="confirm" value={user.confirm} onChange={handleChange} placeholder="Repeat your password" />
                     </div>
                     
                     <div className="form-field">
