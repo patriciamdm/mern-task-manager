@@ -13,8 +13,8 @@ const Task = ({ task }) => {
     const [currentProject] = selproject  // destructuring, comes as an array
 
     const deleteOneTask = taskId => {
-        deleteTask(taskId)
-        getTasks(currentProject.id)
+        deleteTask(taskId, currentProject._id)
+        getTasks(currentProject._id)
     }
 
     const changeState = data => {
@@ -38,7 +38,7 @@ const Task = ({ task }) => {
 
             <div className="actions">
                 <button type="button" className="btn btn-primary" onClick={() => selectTask(task)}>Edit</button>
-                <button type="button" className="btn btn-secondary" onClick={() => deleteOneTask(task.id)} >Delete</button>
+                <button type="button" className="btn btn-secondary" onClick={() => deleteOneTask(task._id)} >Delete</button>
             </div>
         </li>
     )

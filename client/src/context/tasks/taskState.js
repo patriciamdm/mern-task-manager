@@ -43,7 +43,16 @@ const TaskState = props => {
     
     const showError = () => dispatch({ type: VALIDATE_TASK })
     
-    const deleteTask = id => dispatch({ type: DELETE_TASK, payload: id })
+    const deleteTask = async (taskId, projectId) => {
+        try {
+            await apiHandler.delete(`/api/tasks/${taskId}`, { params: { project: projectId } })
+            dispatch({ type: DELETE_TASK, payload: taskId })
+        } catch (err) {
+            console.log(err)
+            // const alert = { msg: err.response.data.msg, category: 'alert-error'}
+            // dispatch({ type: TASK_ERROR, payload: alert })
+        }
+    }
     
     const taskState = info => dispatch({ type: COMPLETED_TASK, payload: info})
     

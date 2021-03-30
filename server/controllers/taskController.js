@@ -30,8 +30,8 @@ exports.createTask = async (req, res) => {
 
 
 exports.getTasks = async (req, res) => {
+    const { project } = req.query
     try {
-        const { project } = req.query
         const projectExists = await Project.findById(project)
         if (!projectExists) {
             return res.status(404).json({msg: 'Project not found'})
@@ -72,14 +72,15 @@ exports.updateTask = async (req, res) => {
 
 
 exports.deleteTask = async (req, res) => {
+    const { project } = req.query
     try {
         let task = await Task.findById(req.params.id)
         if (!task) {
             return res.status(404).json({msg: 'Task not found'})
         }
 
-        const project = await Project.findById(req.body.project)
-        if (project.creator.toString() !== req.user.id) {
+        const projectExists = await Project.findById(project)
+        if (projectExists.creator.toString() !== req.user.id) {
             return res.status(401).json({msg: 'Not authorized'})
         }
 

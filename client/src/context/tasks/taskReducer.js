@@ -9,7 +9,7 @@ export default (state, action) => {
         case VALIDATE_TASK:
             return { ...state, taskerror: true }
         case DELETE_TASK:
-            return { ...state, projecttasks: state.projecttasks.filter(elm => elm.id !== action.payload) }
+            return { ...state, projecttasks: state.projecttasks.filter(elm => elm._id !== action.payload) }
         case COMPLETED_TASK:
         case UPDATE_TASK:
             return { ...state, projecttasks: state.projecttasks.map(elm => elm.id === action.payload.id ? action.payload : elm), selectedtask: null }
