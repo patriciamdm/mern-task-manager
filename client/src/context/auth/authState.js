@@ -30,6 +30,18 @@ const AuthState = props => {
             dispatch({ type: SIGNIN_ERROR, payload: alert })
         }
     }
+    
+    const logIn = async info => {
+        try {
+            const response = await apiHandler.post('/api/auth', info)
+            dispatch({ type: LOGIN_SUCCESS, payload: response.data })
+            getUserLogged()
+        } catch (err) {
+            console.log(err.response.data)
+            const alert = { msg: err.response.data.msg, category: 'alert-error'}
+            dispatch({ type: LOGIN_ERROR, payload: alert })
+        }
+    }
 
     const getUserLogged = async () => {
         const token = localStorage.getItem('token')
@@ -38,7 +50,6 @@ const AuthState = props => {
         }
         try {
             const response = await apiHandler.get('/api/auth')
-            console.log(response)
             dispatch({type: GET_USER, payload: response.data})
         } catch (err) {
             console.log(err.response)
@@ -46,10 +57,12 @@ const AuthState = props => {
         }
     }
 
+    const logOut = () => dispatch({type: LOG_OUT})
+
     return (
         <authContext.Provider value={{
             token: state.token, logged: state.logged, user: state.user, alertmsg: state.alertmsg,
-            signUp
+            signUp, logIn, getUserLogged, logOut
         }}>
             {props.children}
         </authContext.Provider>

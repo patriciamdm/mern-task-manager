@@ -3,19 +3,16 @@ import { SIGNIN_SUCCESS, SIGNIN_ERROR, GET_USER, LOGIN_SUCCESS, LOGIN_ERROR, LOG
 export default (state, action) => {
     switch (action.type) {
         case SIGNIN_SUCCESS:
-            localStorage.setItem('token', action.payload.token)
-            return { ...state, logged: true, message: null }
-        case SIGNIN_ERROR:
-            return { ...state, token: null, alertmsg: action.payload }
-        case GET_USER:
-            return { ...state, user: action.payload.user }
         case LOGIN_SUCCESS:
-            return {  }
+            localStorage.setItem('token', action.payload.token)
+            return { ...state, logged: true, alertmsg: null }
+        case SIGNIN_ERROR:
         case LOGIN_ERROR:
-            localStorage.removeItem('token')
-            return { ...state, token: null, alertmsg: action.payload }
         case LOG_OUT:
-            return {  }
+            localStorage.removeItem('token')
+            return { ...state, token: null, user: null, logged: null, alertmsg: action.payload }
+        case GET_USER:
+            return { ...state, user: action.payload.user, logged: true }
         default:
             return state
     }

@@ -6,11 +6,6 @@ const User = require('../models/user.model')
 
 
 exports.authenticateUser = async (req, res) => {
-    
-    const errors = validationResult(req)
-    if (!errors.isEmpty()) {
-        return res.status(400).json({ msgs: errors.array() })
-    }
 
     const { email, password } = req.body
     

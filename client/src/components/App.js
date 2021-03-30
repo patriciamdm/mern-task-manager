@@ -9,6 +9,11 @@ import ProjectState from '../context/projects/projectState'
 import TaskState from '../context/tasks/taskState'
 import AlertState from '../context/alerts/alertState'
 import AuthState from '../context/auth/authState'
+import tokenService from '../services/token.service'
+
+
+const token = localStorage.getItem('token')
+if (token) tokenService(token)
 
 
 function App() {
