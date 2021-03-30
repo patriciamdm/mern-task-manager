@@ -24,7 +24,7 @@ const TaskForm = () => {
 
     const [currentProject] = selproject  // destructuring, comes as an array
 
-    const handleChange = e => setNewTask({...newtask, [e.target.name]: e.target.value, projectId: currentProject.id })
+    const handleChange = e => setNewTask({...newtask, [e.target.name]: e.target.value, project: currentProject._id })
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -36,7 +36,7 @@ const TaskForm = () => {
 
         selectedtask === null ? addTask(newtask) : updateTask(newtask)
 
-        getTasks(currentProject.id)
+        getTasks(currentProject._id)
         setNewTask({ name: '' })
     }
 

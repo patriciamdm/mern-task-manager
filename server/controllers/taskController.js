@@ -13,14 +13,14 @@ exports.createTask = async (req, res) => {
     try {
         const project = await Project.findById(req.body.project)
         if (!project) {
-            return res.status(404).jason({msg: 'Project not found'})
+            return res.status(404).json({msg: 'Project not found'})
         }
         if (project.creator.toString() !== req.user.id) {
-            return res.status(401).jason({msg: 'Not authorized'})
+            return res.status(401).json({msg: 'Not authorized'})
         }
 
         const task = await Task.create(req.body)
-        res.json({task})
+        res.json(task)
 
     } catch (err) {
         console.error('Error creating task:', err)
@@ -31,15 +31,15 @@ exports.createTask = async (req, res) => {
 
 exports.getTasks = async (req, res) => {
     try {
-        const project = await Project.findById(req.body.project)
-        if (!project) {
-            return res.status(404).jason({msg: 'Project not found'})
+        const { project } = req.query
+        const projectExists = await Project.findById(project)
+        if (!projectExists) {
+            return res.status(404).json({msg: 'Project not found'})
         }
-        if (project.creator.toString() !== req.user.id) {
-            return res.status(401).jason({msg: 'Not authorized'})
+        if (projectExists.creator.toString() !== req.user.id) {
+            return res.status(401).json({msg: 'Not authorized'})
         }
-
-        const tasks = await Task.find({ project })
+        const tasks = await Task.find({ project }).sort({createdAt: -1})
         res.json({tasks})
 
     } catch (err) {
@@ -53,12 +53,12 @@ exports.updateTask = async (req, res) => {
     try {
         let task = await Task.findById(req.params.id)
         if (!task) {
-            return res.status(404).jason({msg: 'Task not found'})
+            return res.status(404).json({msg: 'Task not found'})
         }
 
         const project = await Project.findById(req.body.project)
         if (project.creator.toString() !== req.user.id) {
-            return res.status(401).jason({msg: 'Not authorized'})
+            return res.status(401).json({msg: 'Not authorized'})
         }
 
         task = await Task.findByIdAndUpdate(req.params.id, req.body, { new: true })
@@ -75,12 +75,12 @@ exports.deleteTask = async (req, res) => {
     try {
         let task = await Task.findById(req.params.id)
         if (!task) {
-            return res.status(404).jason({msg: 'Task not found'})
+            return res.status(404).json({msg: 'Task not found'})
         }
 
         const project = await Project.findById(req.body.project)
         if (project.creator.toString() !== req.user.id) {
-            return res.status(401).jason({msg: 'Not authorized'})
+            return res.status(401).json({msg: 'Not authorized'})
         }
 
         await Task.findByIdAndDelete(req.params.id)

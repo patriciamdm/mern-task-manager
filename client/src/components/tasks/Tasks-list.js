@@ -28,7 +28,7 @@ const TasksList = () => {
                     <li className="task"><p>No tasks</p></li>
                     :
                     <TransitionGroup>
-                        {projecttasks.map(elm => <CSSTransition key={elm.id} timeout={200} classNames="task" ><Task task={elm} /></CSSTransition>)}
+                        {projecttasks.map(elm => <CSSTransition key={elm._id} timeout={200} classNames="task" ><Task task={elm} /></CSSTransition>)}
                     </TransitionGroup>
                     }
             </ul>

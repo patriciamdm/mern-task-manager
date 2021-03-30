@@ -8,7 +8,7 @@ export const PROJECT_ERROR = 'PROJECT_ERROR'
 
 export const PROJECT_TASKS = 'PROJECT_TASKS'
 export const ADD_TASK = 'ADD_TASK'
-export const TASK_ERROR = 'TASK_ERROR'
+export const VALIDATE_TASK = 'VALIDATE_TASK'
 export const DELETE_TASK = 'DELETE_TASK'
 export const COMPLETED_TASK = 'COMPLETED_TASK'
 export const SELECTED_TASK = 'SELECTED_TASK'
