@@ -13,7 +13,7 @@ const TasksList = () => {
     const { selproject, deleteProject } = projectsContext
 
     const tasksContext = useContext(TaskContext)
-    const { projecttasks } = tasksContext
+    const { projecttasks, alertmsg } = tasksContext
 
     if (!selproject) return <h2>Select a project</h2>
 
@@ -22,6 +22,7 @@ const TasksList = () => {
     return (
         <>
             <h2>Project: {currentProject.name} </h2>
+            {alertmsg && <div className={`alert ${alertmsg.category}`}> {alertmsg.msg} </div> }
             <ul style={{maxWidth: '600px', margin: '0 auto'}} >
                 {projecttasks.length === 0
                     ?

@@ -8,7 +8,7 @@ const Task = ({ task }) => {
     const { selproject } = projectsContext
     
     const tasksContext = useContext(TaskContext)
-    const { deleteTask, getTasks, taskState, selectTask } = tasksContext
+    const { deleteTask, getTasks, updateTask, selectTask } = tasksContext
 
     const [currentProject] = selproject  // destructuring, comes as an array
 
@@ -18,8 +18,8 @@ const Task = ({ task }) => {
     }
 
     const changeState = data => {
-        data.completed ? data.completed = false : data.completed = true
-        taskState(data)
+        data.state ? data.state = false : data.state = true
+        updateTask(data)
     }
 
     return (
@@ -28,7 +28,7 @@ const Task = ({ task }) => {
             <p>{task.name}</p>
 
             <div className="state">
-                {task.completed
+                {task.state
                     ?
                     <button type="button" className="complete" onClick={() => changeState(task)}>Complete</button>
                     :

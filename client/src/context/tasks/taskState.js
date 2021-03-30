@@ -3,7 +3,7 @@ import React, { useReducer } from 'react'
 import taskContext from './taskContext'
 import taskReducer from './taskReducer'
 
-import { PROJECT_TASKS, ADD_TASK, VALIDATE_TASK, DELETE_TASK, COMPLETED_TASK, SELECTED_TASK, UPDATE_TASK } from '../../types'
+import { PROJECT_TASKS, ADD_TASK, VALIDATE_TASK, DELETE_TASK, SELECTED_TASK, UPDATE_TASK, TASK_ERROR } from '../../types'
 
 import apiHandler from '../../services/api.service'
 
@@ -13,7 +13,8 @@ const TaskState = props => {
     const initialState = {
         projecttasks: [],
         taskerror: false,
-        selectedtask: null
+        selectedtask: null,
+        alertmsg: null
     }
 
     const [state, dispatch] = useReducer(taskReducer, initialState)
@@ -24,20 +25,19 @@ const TaskState = props => {
             dispatch({ type: PROJECT_TASKS, payload: response.data.tasks })
         } catch (err) {
             console.log(err)
-            // const alert = { msg: err.response.data.msg, category: 'alert-error'}
-            // dispatch({ type: TASK_ERROR, payload: alert })
+            const alert = { msg: `Error ${err.response.status}: ${err.response.statusText}`, category: 'alert-error'}
+            dispatch({ type: TASK_ERROR, payload: alert })
         }
     }
 
     const addTask = async info => {
         try {
             const response = await apiHandler.post('/api/tasks', info)
-            console.log(response.data)
-            dispatch({ type: ADD_TASK })
+            dispatch({ type: ADD_TASK, payload: response.data })
         } catch (err) {
             console.log(err)
-            // const alert = { msg: err.response.data.msg, category: 'alert-error'}
-            // dispatch({ type: TASK_ERROR, payload: alert })
+            const alert = { msg: `Error ${err.response.status}: ${err.response.statusText}`, category: 'alert-error'}
+            dispatch({ type: TASK_ERROR, payload: alert })
         }
     }
     
@@ -49,22 +49,29 @@ const TaskState = props => {
             dispatch({ type: DELETE_TASK, payload: taskId })
         } catch (err) {
             console.log(err)
-            // const alert = { msg: err.response.data.msg, category: 'alert-error'}
-            // dispatch({ type: TASK_ERROR, payload: alert })
+            const alert = { msg: `Error ${err.response.status}: ${err.response.statusText}`, category: 'alert-error'}
+            dispatch({ type: TASK_ERROR, payload: alert })
         }
     }
     
-    const taskState = info => dispatch({ type: COMPLETED_TASK, payload: info})
-    
     const selectTask = info => dispatch({ type: SELECTED_TASK, payload: info })
     
-    const updateTask = info => dispatch({type: UPDATE_TASK, payload: info})
+    const updateTask = async info => {
+        try {
+            const response = await apiHandler.put(`/api/tasks/${info._id}`, info)
+            dispatch({type: UPDATE_TASK, payload: response.data.task})
+        } catch (err) {
+            console.log(err)
+            const alert = { msg: `Error ${err.response.status}: ${err.response.statusText}`, category: 'alert-error'}
+            dispatch({ type: TASK_ERROR, payload: alert }) 
+        }
+    }
 
 
     return (
         <taskContext.Provider value={{
-            projecttasks: state.projecttasks, taskerror: state.taskerror, selectedtask: state.selectedtask,
-            getTasks, addTask, showError, deleteTask, taskState, selectTask, updateTask
+            projecttasks: state.projecttasks, taskerror: state.taskerror, selectedtask: state.selectedtask, alertmsg: state.alertmsg,
+            getTasks, addTask, showError, deleteTask, selectTask, updateTask
         }} >
             {props.children}
         </taskContext.Provider>
