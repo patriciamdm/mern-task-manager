@@ -12,9 +12,6 @@ import AuthState from '../context/auth/authState'
 
 
 function App() {
-
-  console.log(process.env.REACT_APP_SERVER_LOCAL_URL)
-  
   return (
     <ProjectState>
       <TaskState>

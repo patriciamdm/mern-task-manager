@@ -1,12 +1,16 @@
 import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
+
 import AlertContext from '../../context/alerts/alertContext'
+import AuthContext from '../../context/auth/authContext'
 
 
 const Signup = () => {
 
     const alertContext = useContext(AlertContext)
     const { alert, showAlert } = alertContext
+    const authContext = useContext(AuthContext)
+    const { signUp } = authContext
 
     const [user, setUser] = useState({
         username: '',
@@ -36,6 +40,8 @@ const Signup = () => {
             showAlert('Passwords must be the same', 'alert-error')
             return
         }
+
+        signUp({ username, email, password })
     }
 
     return (

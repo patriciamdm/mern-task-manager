@@ -13,11 +13,7 @@ const app = express()
 
 //Configs
 require('./configs/middleware.config')(app)
-
-// // Configs
-// require('./configs/cors.config')(app)
-// require('./configs/middleware.config')(app)
-// require('./configs/passport.config')(app)
+require('./configs/cors.config')(app)
 
 // Routes index
 require('./routes')(app)
