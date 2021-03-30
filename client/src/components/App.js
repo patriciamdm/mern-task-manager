@@ -8,19 +8,26 @@ import Projects from './projects/Projects'
 import ProjectState from '../context/projects/projectState'
 import TaskState from '../context/tasks/taskState'
 import AlertState from '../context/alerts/alertState'
+import AuthState from '../context/auth/authState'
+
 
 function App() {
+
+  console.log(process.env.REACT_APP_SERVER_LOCAL_URL)
+  
   return (
     <ProjectState>
       <TaskState>
         <AlertState>
-          <Router>
-            <Switch>
-              <Route exact path="/" component={Login} />
-              <Route exact path="/signup" component={Signup} />
-              <Route exact path="/projects" component={Projects} />
-            </Switch>
-          </Router>
+          <AuthState>
+            <Router>
+              <Switch>
+                <Route exact path="/" component={Login} />
+                <Route exact path="/signup" component={Signup} />
+                <Route exact path="/projects" component={Projects} />
+              </Switch>
+            </Router>
+          </AuthState>
         </AlertState>
       </TaskState>
     </ProjectState>

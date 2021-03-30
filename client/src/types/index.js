@@ -13,6 +13,12 @@ export const COMPLETED_TASK = 'COMPLETED_TASK'
 export const SELECTED_TASK = 'SELECTED_TASK'
 export const UPDATE_TASK = 'UPDATE_TASK'
 
-
 export const SHOW_ALERT = 'SHOW_ALERT'
 export const HIDE_ALERT = 'HIDE_ALERT'
+
+export const SIGNIN_SUCCESS = 'SIGNIN_SUCCESS'
+export const SIGNIN_ERROR = 'SIGNIN_ERROR'
+export const GET_USER = 'GET_USER'
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
+export const LOGIN_ERROR = 'LOGIN_ERROR'
+export const LOG_OUT = 'LOG_OUT'
