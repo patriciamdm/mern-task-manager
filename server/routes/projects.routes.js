@@ -2,12 +2,12 @@ const express = require('express')
 const router = express.Router()
 
 const {check} = require('express-validator')
-const {userIsAuthenticated} = require('../middlewares/middlewares')
+const {userIsLogged} = require('../middlewares/middlewares')
 const projectController = require('../controllers/projectController')
 
 
 router.post('/',
-    userIsAuthenticated,
+    userIsLogged,
     [
         check('name', 'Name is required').not().isEmpty()
     ],
@@ -16,13 +16,13 @@ router.post('/',
 
 
 router.get('/',
-    userIsAuthenticated,
+    userIsLogged,
     projectController.getProjects
 )
 
 
 router.put('/:id',
-    userIsAuthenticated,
+    userIsLogged,
     [
         check('name', 'Name is required').not().isEmpty()
     ],
@@ -31,7 +31,7 @@ router.put('/:id',
 
 
 router.delete('/:id',
-    userIsAuthenticated,
+    userIsLogged,
     projectController.deleteProject
 )
 

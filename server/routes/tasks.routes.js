@@ -2,12 +2,12 @@ const express = require('express')
 const router = express.Router()
 
 const {check} = require('express-validator')
-const {userIsAuthenticated} = require('../middlewares/middlewares')
+const {userIsLogged} = require('../middlewares/middlewares')
 const taskController = require('../controllers/taskController')
 
 
 router.post('/',
-    userIsAuthenticated,
+    userIsLogged,
     [
         check('name', 'Name is required').not().isEmpty()
     ],
@@ -16,19 +16,19 @@ router.post('/',
 
 
 router.get('/',
-    userIsAuthenticated,
+    userIsLogged,
     taskController.getTasks
 )
 
 
 router.put('/:id',
-    userIsAuthenticated,
+    userIsLogged,
     taskController.updateTask
 )
 
 
 router.delete('/:id',
-    userIsAuthenticated,
+    userIsLogged,
     taskController.deleteTask
 )
 

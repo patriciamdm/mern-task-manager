@@ -45,3 +45,14 @@ exports.authenticateUser = async (req, res) => {
     }
 
 }
+
+
+exports.getLoggedUser = async (req, res) => {
+    try {
+        const user = await User.findById(req.user.id).select('-password')
+        res.json({ user })
+    } catch (err) {
+        console.error('Error getting logged user:', err)
+        res.status(500).json({ msg: 'Error getting logged user' })
+    }
+}

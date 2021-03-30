@@ -4,17 +4,18 @@ export default (state, action) => {
     switch (action.type) {
         case SIGNIN_SUCCESS:
             localStorage.setItem('token', action.payload.token)
-            return { ...state, authenticated: true, message: null }
+            return { ...state, logged: true, message: null }
         case SIGNIN_ERROR:
-            return { ...state, token: null, message: action.payload }
-        // case GET_USER:
-        //     return {  }
-        // case LOGIN_SUCCESS:
-        //     return {  }
-        // case LOGIN_ERROR:
-        //     return {  }
-        // case LOG_OUT:
-        //     return {  }
+            return { ...state, token: null, alertmsg: action.payload }
+        case GET_USER:
+            return { ...state, user: action.payload.user }
+        case LOGIN_SUCCESS:
+            return {  }
+        case LOGIN_ERROR:
+            localStorage.removeItem('token')
+            return { ...state, token: null, alertmsg: action.payload }
+        case LOG_OUT:
+            return {  }
         default:
             return state
     }

@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken')
 
 module.exports = {
     
-    userIsAuthenticated: (req, res, next) => {
+    userIsLogged: (req, res, next) => {
         const token = req.header('x-auth-token')
         
         if (!token) {
