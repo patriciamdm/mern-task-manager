@@ -32,7 +32,7 @@ const TasksList = () => {
                     </TransitionGroup>
                     }
             </ul>
-            <button type="button" className="btn btn-delete" onClick={() => deleteProject(currentProject.id)} >Delete project &times;</button>
+            <button type="button" className="btn btn-delete" onClick={() => deleteProject(currentProject._id)} >Delete project &times;</button>
         </>
     )
 }

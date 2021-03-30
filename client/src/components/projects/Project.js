@@ -19,7 +19,7 @@ const Project = ({ project }) => {
 
     return (
         <li>
-            <button type="button" className="btn btn-blank" onClick={() => defineProject(project.id)}>
+            <button type="button" className="btn btn-blank" onClick={() => defineProject(project._id)}>
                 {project.name}
             </button>
         </li>

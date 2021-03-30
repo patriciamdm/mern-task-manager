@@ -43,7 +43,14 @@ const ProjectState = props => {
     
     const selectProject = id => dispatch({ type: SELECTED_PROJECT, payload: id })
     
-    const deleteProject = id => dispatch({ type: DELETE_PROJECT, payload: id})
+    const deleteProject = async id => {
+        try {
+            await apiHandler.delete(`/api/projects/${id}`)
+            dispatch({ type: DELETE_PROJECT, payload: id})
+        } catch (err) {
+            console.log(err)
+        }
+    }
 
 
     return (

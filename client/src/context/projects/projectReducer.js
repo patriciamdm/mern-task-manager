@@ -11,9 +11,9 @@ export default (state, action) => {
         case PROJECT_ERROR:
             return { ...state, projecterror: true }
         case SELECTED_PROJECT:
-            return { ...state, selproject: state.projects.filter(elm => elm.id === action.payload) }
+            return { ...state, selproject: state.projects.filter(elm => elm._id === action.payload) }
         case DELETE_PROJECT:
-            return { ...state, projects: state.projects.filter(elm => elm.id !== action.payload), selproject: null }
+            return { ...state, projects: state.projects.filter(elm => elm._id !== action.payload), selproject: null }
         default:
             return state
     }
