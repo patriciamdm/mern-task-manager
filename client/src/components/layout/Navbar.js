@@ -10,6 +10,7 @@ const Navbar = () => {
 
     useEffect(() => {
         getUserLogged()
+        // eslint-disable-next-line
     }, [])
 
     return (

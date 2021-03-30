@@ -13,8 +13,8 @@ exports.createProject = async (req, res) => {
     const creator = req.user.id
 
     try {
-        const project = await Project.create({name, creator})
-
+        const project = await Project.create({ name, creator })
+        res.json(project)
     } catch (err) {
         console.error('Error creating project:', err)
         res.status(500).json({ msg: 'Error saving project to database' })
@@ -25,7 +25,7 @@ exports.createProject = async (req, res) => {
 exports.getProjects = async (req, res) => {
     try {
         const projects = await Project.find({ creator: req.user.id })
-        res.json({ projects })
+        res.json(projects)
 
     } catch (err) {
         console.error('Error getting projects:', err)

@@ -20,7 +20,7 @@ const ProjectsList = () => {
     return (
         <ul className="project-list" >
             <TransitionGroup>
-                {projects.map(elm => <CSSTransition key={elm.id} timeout={200} classNames="project"><Project project={elm} /></CSSTransition>)}
+                {projects.map(elm => <CSSTransition key={elm._id} timeout={200} classNames="project"><Project project={elm} /></CSSTransition>)}
             </TransitionGroup>
         </ul>
     )
